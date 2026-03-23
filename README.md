@@ -2,7 +2,7 @@
   This is a plugin based on kong/kong-plugin.
   This plugin is to send the client request to a check server first with the required header, and if the server return 200 then it can continue proxying per kong gateway, otherwise reject the client request.
 
-Test Result [./test/pongo.txt](./test/pongo.txt)):
+Test Result [./test/pongo.txt](./test/pongo.txt):
 
 Test Summary:
 [==========] 9 tests from 2 test files ran. (29328.85 ms total)
