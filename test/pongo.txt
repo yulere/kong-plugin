@@ -1,0 +1,73 @@
+Kong version: 3.9.1
+
+
+Stopping after installing dependencies for kong-plugin-myplugin 0.1.0-1
+
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from /kong-plugin/spec/myplugin/02-unit_spec.lua
+[ RUN      ] /kong-plugin/spec/myplugin/02-unit_spec.lua:60: myplugin: (unit) continues when check_url returns 200
+[       OK ] /kong-plugin/spec/myplugin/02-unit_spec.lua:60: myplugin: (unit) continues when check_url returns 200 (0.05 ms)
+[ RUN      ] /kong-plugin/spec/myplugin/02-unit_spec.lua:67: myplugin: (unit) rejects when header missing
+[       OK ] /kong-plugin/spec/myplugin/02-unit_spec.lua:67: myplugin: (unit) rejects when header missing (0.04 ms)
+[ RUN      ] /kong-plugin/spec/myplugin/02-unit_spec.lua:75: myplugin: (unit) rejects when check_url returns non-200
+/kong-plugin/spec/myplugin/02-unit_spec.lua:88: Expected objects to be equal.
+Passed in:
+(nil)
+Expected:
+(number) 401
+
+stack traceback:
+	/kong-plugin/spec/myplugin/02-unit_spec.lua:88: in function </kong-plugin/spec/myplugin/02-unit_spec.lua:75>
+
+[  FAILED  ] /kong-plugin/spec/myplugin/02-unit_spec.lua:75: myplugin: (unit) rejects when check_url returns non-200 (0.11 ms)
+[----------] 3 tests from /kong-plugin/spec/myplugin/02-unit_spec.lua (0.78 ms total)
+
+[----------] Running tests from /kong-plugin/spec/myplugin/10-integration_spec.lua
+[ RUN      ] /kong-plugin/spec/myplugin/10-integration_spec.lua:55: myplugin: (access) [#postgres] good request gets valid 'Hello-World' header
+[       OK ] /kong-plugin/spec/myplugin/10-integration_spec.lua:55: myplugin: (access) [#postgres] good request gets valid 'Hello-World' header (665.56 ms)
+[ RUN      ] /kong-plugin/spec/myplugin/10-integration_spec.lua:74: myplugin: (access) [#postgres] wrong header gets an invalid 'Hello-World' header
+/kong-plugin/spec/myplugin/10-integration_spec.lua:82: Invalid response status code.
+Status not expected:
+(number) 200
+Status received:
+(number) 200
+Body:
+(string) '{"post_data":{"params":null,"kind":"unknown","text":""},"uri_args":{},"vars":{"host":"127.0.0.1","remote_port":"","realip_remote_port":"50540","server_protocol":"HTTP/1.1","request":"GET /request HTTP/1.1","hostname":"47c2cee05ae8","is_args":"","request_method":"GET","server_port":"15555","scheme":"http","server_addr":"127.0.0.1","ssl_server_name":"no SNI","request_length":"383","https":"","binary_remote_addr":"\u007f\u0000\u0000\u0001","server_name":"mock_upstream","request_time":"0.000","uri":"/request","realip_remote_addr":"127.0.0.1","request_uri":"/request","remote_addr":"127.0.0.1"},"headers":{"host":"127.0.0.1:15555","x-forwarded-host":"test1.com","x-forwarded-port":"9000","x-forwarded-path":"/request","x-real-ip":"127.0.0.1","connection":"keep-alive","via":"1.1 kong/3.9.1","hello-world":"bad request","user-agent":"lua-resty-http/0.17.2 (Lua) ngx_lua/10026","x-forwarded-proto":"http","x-forwarded-for":"127.0.0.1","x-kong-request-id":"d1a61f1e6e74fb512a8f5d1e1769f435"},"url":"http://127.0.0.1:15555/request"}'
+200
+
+stack traceback:
+	/kong-plugin/spec/myplugin/10-integration_spec.lua:82: in function </kong-plugin/spec/myplugin/10-integration_spec.lua:74>
+
+[  FAILED  ] /kong-plugin/spec/myplugin/10-integration_spec.lua:74: myplugin: (access) [#postgres] wrong header gets an invalid 'Hello-World' header (36.05 ms)
+[ RUN      ] /kong-plugin/spec/myplugin/10-integration_spec.lua:88: myplugin: (access) [#postgres] no header rejects request without check header
+[       OK ] /kong-plugin/spec/myplugin/10-integration_spec.lua:88: myplugin: (access) [#postgres] no header rejects request without check header (0.52 ms)
+[ RUN      ] /kong-plugin/spec/myplugin/10-integration_spec.lua:55: myplugin: (access) [#off] good request gets valid 'Hello-World' header
+[       OK ] /kong-plugin/spec/myplugin/10-integration_spec.lua:55: myplugin: (access) [#off] good request gets valid 'Hello-World' header (240.19 ms)
+[ RUN      ] /kong-plugin/spec/myplugin/10-integration_spec.lua:74: myplugin: (access) [#off] wrong header gets an invalid 'Hello-World' header
+/kong-plugin/spec/myplugin/10-integration_spec.lua:82: Invalid response status code.
+Status not expected:
+(number) 200
+Status received:
+(number) 200
+Body:
+(string) '{"headers":{"via":"1.1 kong/3.9.1","user-agent":"lua-resty-http/0.17.2 (Lua) ngx_lua/10026","connection":"keep-alive","x-forwarded-proto":"http","x-forwarded-host":"test1.com","x-forwarded-for":"127.0.0.1","x-forwarded-path":"/request","x-real-ip":"127.0.0.1","hello-world":"bad request","x-kong-request-id":"71a7bf7248749e30b60e5d5844520a1c","x-forwarded-port":"9000","host":"127.0.0.1:15555"},"post_data":{"kind":"unknown","text":"","params":null},"uri_args":{},"url":"http://127.0.0.1:15555/request","vars":{"scheme":"http","request":"GET /request HTTP/1.1","server_port":"15555","request_uri":"/request","https":"","uri":"/request","remote_port":"","host":"127.0.0.1","binary_remote_addr":"\u007f\u0000\u0000\u0001","hostname":"47c2cee05ae8","ssl_server_name":"no SNI","is_args":"","realip_remote_addr":"127.0.0.1","server_protocol":"HTTP/1.1","remote_addr":"127.0.0.1","request_method":"GET","request_time":"0.000","request_length":"383","server_addr":"127.0.0.1","server_name":"mock_upstream","realip_remote_port":"54812"}}'
+200
+
+stack traceback:
+	/kong-plugin/spec/myplugin/10-integration_spec.lua:82: in function </kong-plugin/spec/myplugin/10-integration_spec.lua:74>
+
+[  FAILED  ] /kong-plugin/spec/myplugin/10-integration_spec.lua:74: myplugin: (access) [#off] wrong header gets an invalid 'Hello-World' header (36.61 ms)
+[ RUN      ] /kong-plugin/spec/myplugin/10-integration_spec.lua:88: myplugin: (access) [#off] no header rejects request without check header
+[       OK ] /kong-plugin/spec/myplugin/10-integration_spec.lua:88: myplugin: (access) [#off] no header rejects request without check header (0.62 ms)
+[----------] 6 tests from /kong-plugin/spec/myplugin/10-integration_spec.lua (29687.21 ms total)
+
+[----------] Global test environment teardown.
+[==========] 9 tests from 2 test files ran. (29688.60 ms total)
+[  PASSED  ] 6 tests.
+[  FAILED  ] 3 tests, listed below:
+[  FAILED  ] /kong-plugin/spec/myplugin/02-unit_spec.lua:75: myplugin: (unit) rejects when check_url returns non-200
+[  FAILED  ] /kong-plugin/spec/myplugin/10-integration_spec.lua:74: myplugin: (access) [#postgres] wrong header gets an invalid 'Hello-World' header
+[  FAILED  ] /kong-plugin/spec/myplugin/10-integration_spec.lua:74: myplugin: (access) [#off] wrong header gets an invalid 'Hello-World' header
+
+ 3 FAILED TESTS
